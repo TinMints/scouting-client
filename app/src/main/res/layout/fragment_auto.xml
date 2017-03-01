@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.tinmints.scouting.AutoFragment">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp" >
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_marginBottom="15dp">
+            <TableRow>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Start in Middle: " />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/toggleButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Cross Baseline: " />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/toggleButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Made Fuel High: " />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/toggleButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Made Fuel Low: " />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/toggleButton5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+            </TableRow>
+        </TableLayout>
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+            <TableRow>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Delivered Gear: " />
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/toggleButton6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Number of Rotors: " />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/light_gray"
+                    android:text="1-2" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,37 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.tinmints.scouting.MatchFragment">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_marginBottom="15dp">
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/recorder"  />
+            <EditText
+                android:id="@+id/recorder_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray"
+                android:hint="@string/recorder_hint" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/match"  />
+            <EditText
+                android:id="@+id/match_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray"
+                android:hint="@string/match_hint" />
+        </TableRow>
+    </TableLayout>
+</FrameLayout>
