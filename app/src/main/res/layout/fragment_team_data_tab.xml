@@ -1,0 +1,61 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeamDataTabFragment">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_weight="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/match"/>
+
+            <TextView
+                android:id="@+id/match_number"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeamDataFragment"
+            android:id="@+id/team_data_fragment"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:layout="@layout/fragment_team_data" />
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeamDataFragment"
+            android:id="@+id/team_data_fragment1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:layout="@layout/fragment_team_data" />
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeamDataFragment"
+            android:id="@+id/team_data_fragment2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:layout="@layout/fragment_team_data" />
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

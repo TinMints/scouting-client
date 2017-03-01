@@ -1,45 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tab_layout"/>
+
+</RelativeLayout>
+
+
+
+<!-- LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <fragment android:name="net.tinmints.scouting.TeamDataTabFragment"
+        android:id="@+id/team_data_tab_fragment"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_team_data_tab" />
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText android:id="@+id/edit_message"
+        android:orientation="horizontal" -->
+        <!-- EditText android:id="@+id/edit_message"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_message" />
-        <Button
+            android:hint="@string/edit_message" / -->
+        <!-- Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_send"
             android:onClick="sendMessage" />
-    </LinearLayout>
-    <LinearLayout
+    </LinearLayout -->
+    <!-- LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/addButton1"
             android:text="@string/button_add"
+            android:background="@drawable/up_button"
             android:onClick="add" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/minusButton1"
-            android:text="@string/button_minus"
-            android:onClick="minus" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,6 +89,15 @@
             android:textColor="#000000"
             android:textStyle="bold"
             android:textColorHighlight="#000000"
+            android:textSize="30dp"
             android:textIsSelectable="false" />
-    </LinearLayout>
-</LinearLayout>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/minusButton1"
+            android:text="@string/button_minus"
+            android:background="@drawable/down_button"
+            android:onClick="minus" />
+
+    </LinearLayout -->
+<!-- /LinearLayout -->
