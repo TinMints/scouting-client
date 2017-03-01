@@ -10,12 +10,16 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import net.tinmints.scouting.model.ScoutData;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
 
@@ -34,7 +38,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_message);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        ScoutData[] data = (ScoutData[])intent.getSerializableExtra(MainActivity.DATA);
+        String message = serialize(data[0]);
+        String message1 = serialize(data[1]);
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         boolean ad = false;
@@ -55,7 +61,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
                         OutputStream out = socket.getOutputStream();
                         PrintStream printStream = new PrintStream(out);
                         printStream.println(message);
-
+                        printStream.println(message1);
+                        printStream.println("done");
                         message = message + " sent";
                         InputStream in = socket.getInputStream();
                         BufferedReader bReader = new BufferedReader(new InputStreamReader(in));
@@ -112,6 +119,28 @@ public class DisplayMessageActivity extends AppCompatActivity {
         }
         return null;
     }
+
+
+    private String serialize(ScoutData data) {
+
+        Method[] methods = data.getClass().getMethods();
+        StringBuilder string = new StringBuilder();
+        for(int i=0;i<methods.length;i++) {
+            try {
+                String name = methods[i].getName();
+                if(name.startsWith("get") || name.startsWith("is")) {
+                    string.append(methods[i].getName()).append(": ").append(methods[i].invoke(data)).append(System.lineSeparator());
+                }
+            }catch(Exception e) {
+
+            }
+
+        }
+
+        return string.toString();
+    }
+
+
 
 }
 
