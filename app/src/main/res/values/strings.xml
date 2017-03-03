@@ -6,4 +6,24 @@
     <string name="button_add">+</string>
     <string name="button_minus">-</string>
     <string name="counter_int">0</string>
+    <string name="team_alliance">Team Alliance: </string>
+    <string name="team_number">Team Number: </string>
+    <string name="team_start_pos">Team Start Postion: </string>
+    <string name="robot_start_pos">Robot Start Postion: </string>
+    <string name="recorder">Recorder: </string>
+    <string name="recorder_hint">Enter Your Name</string>
+    <string name="match">Match Number: </string>
+    <string name="match_hint">Enter Match Number</string>
+    <string-array name="position">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="alliance">
+        <item>Red</item>
+        <item>Blue</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
