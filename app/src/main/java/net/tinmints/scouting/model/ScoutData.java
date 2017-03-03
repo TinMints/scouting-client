@@ -7,21 +7,43 @@ import java.io.Serializable;
  */
 
 public class ScoutData implements Serializable {
-    private String recorder;
-    private int matchNumber;
-    private String teamAlliance;
-    private int teamNumber;
-    private int teamStartPos;
-    private int robotStartPos;
-    private boolean autoMoved;
-    private boolean autoCrossedLine;
-    private boolean autoAttemptedPeg;
-    private boolean autoMadePeg;
-    private int autoPeg;
-    private boolean autoAttemptedHighBoiler;
-    private boolean autpAttemptedLowBoiler;
-    private int autoHighBoiler;
-    private int autoLowerBoiler;
+    private String recorder = "";
+    private int matchNumber = 0;
+    private String teamAlliance = "";
+    private int teamNumber = 0;
+
+    private boolean autoStartInMiddle = false;
+    private boolean autoCrossedLine = false;
+    private boolean autoHighBoiler = false;
+    private boolean autoLowBoiler = false;
+    private boolean autoMadePeg = false;
+    private int autoRotors = 0;
+
+    private int teleLowBoiler = 0;
+    private int teleHighBoiler = 0;
+    private int teleFuelFloor = 0;
+    private int teleFuelStation = 0;
+    private int teleHopperTrigger = 0;
+    private int teleGearsDeliverd = 0;
+    private int teleGearsGot = 0;
+    private int teleGearsPickedUp = 0;
+    private int teleRotors = 0;
+    private boolean teleLifts = false;
+    private boolean teleOffense = false;
+    private boolean teleDefense = false;
+    private boolean teleBreakdown = false;
+    private boolean teleRecover = false;
+
+    private int score = 0;
+    private int fouls = 0;
+
+    public String getRecorder() {
+        return recorder;
+    }
+
+    public void setRecorder(String recorder) {
+        this.recorder = recorder;
+    }
 
     public int getMatchNumber() {
         return matchNumber;
@@ -47,28 +69,12 @@ public class ScoutData implements Serializable {
         this.teamNumber = teamNumber;
     }
 
-    public int getTeamStartPos() {
-        return teamStartPos;
+    public boolean isAutoStartInMiddle() {
+        return autoStartInMiddle;
     }
 
-    public void setTeamStartPos(int teamStartPos) {
-        this.teamStartPos = teamStartPos;
-    }
-
-    public int getRobotStartPos() {
-        return robotStartPos;
-    }
-
-    public void setRobotStartPos(int robotStartPos) {
-        this.robotStartPos = robotStartPos;
-    }
-
-    public boolean isAutoMoved() {
-        return autoMoved;
-    }
-
-    public void setAutoMoved(boolean autoMoved) {
-        this.autoMoved = autoMoved;
+    public void setAutoStartInMiddle(boolean autoStartInMiddle) {
+        this.autoStartInMiddle = autoStartInMiddle;
     }
 
     public boolean isAutoCrossedLine() {
@@ -79,12 +85,20 @@ public class ScoutData implements Serializable {
         this.autoCrossedLine = autoCrossedLine;
     }
 
-    public boolean isAutoAttemptedPeg() {
-        return autoAttemptedPeg;
+    public boolean isAutoHighBoiler() {
+        return autoHighBoiler;
     }
 
-    public void setAutoAttemptedPeg(boolean autoAttemptedPeg) {
-        this.autoAttemptedPeg = autoAttemptedPeg;
+    public void setAutoHighBoiler(boolean autoHighBoiler) {
+        this.autoHighBoiler = autoHighBoiler;
+    }
+
+    public boolean isAutoLowBoiler() {
+        return autoLowBoiler;
+    }
+
+    public void setAutoLowBoiler(boolean autoLowBoiler) {
+        this.autoLowBoiler = autoLowBoiler;
     }
 
     public boolean isAutoMadePeg() {
@@ -95,51 +109,170 @@ public class ScoutData implements Serializable {
         this.autoMadePeg = autoMadePeg;
     }
 
-    public int getAutoPeg() {
-        return autoPeg;
+    public int getAutoRotors() {
+        return autoRotors;
     }
 
-    public void setAutoPeg(int peg) {
-        this.autoPeg = autoPeg;
+    public void setAutoRotors(int autoRotors) {
+        this.autoRotors = autoRotors;
     }
 
-    public boolean isAutoAttemptedHighBoiler() {
-        return autoAttemptedHighBoiler;
+    public int getTeleLowBoiler() {
+        return teleLowBoiler;
     }
 
-    public void setAutoAttemptedHighBoiler(boolean autoAttemptedHighBoiler) {
-        this.autoAttemptedHighBoiler = autoAttemptedHighBoiler;
+    public void setTeleLowBoiler(int teleLowBoiler) {
+        this.teleLowBoiler = teleLowBoiler;
     }
 
-    public boolean isAutpAttemptedLowBoiler() {
-        return autpAttemptedLowBoiler;
+    public int getTeleHighBoiler() {
+        return teleHighBoiler;
     }
 
-    public void setAutpAttemptedLowBoiler(boolean autpAttemptedLowBoiler) {
-        this.autpAttemptedLowBoiler = autpAttemptedLowBoiler;
+    public void setTeleHighBoiler(int teleHighBoiler) {
+        this.teleHighBoiler = teleHighBoiler;
     }
 
-    public int getAutoHighBoiler() {
-        return autoHighBoiler;
+    public int getTeleFuelFloor() {
+        return teleFuelFloor;
     }
 
-    public void setAutoHighBoiler(int autoHighBoiler) {
-        this.autoHighBoiler = autoHighBoiler;
+    public void setTeleFuelFloor(int teleFuelFloor) {
+        this.teleFuelFloor = teleFuelFloor;
     }
 
-    public int getAutoLowerBoiler() {
-        return autoLowerBoiler;
+    public int getTeleFuelStation() {
+        return teleFuelStation;
     }
 
-    public void setAutoLowerBoiler(int autoLowerBoiler) {
-        this.autoLowerBoiler = autoLowerBoiler;
+    public void setTeleFuelStation(int teleFuelStation) {
+        this.teleFuelStation = teleFuelStation;
     }
 
-    public String getRecorder() {
-        return recorder;
+    public int getTeleHopperTrigger() {
+        return teleHopperTrigger;
     }
 
-    public void setRecorder(String recorder) {
-        this.recorder = recorder;
+    public void setTeleHopperTrigger(int teleHopperTrigger) {
+        this.teleHopperTrigger = teleHopperTrigger;
+    }
+
+    public int getTeleRotors() {
+        return teleRotors;
+    }
+
+    public void setTeleRotors(int teleRotors) {
+        this.teleRotors = teleRotors;
+    }
+
+    public boolean isTeleLifts() {
+        return teleLifts;
+    }
+
+    public void setTeleLifts(boolean teleLifts) {
+        this.teleLifts = teleLifts;
+    }
+
+    public boolean isTeleOffense() {
+        return teleOffense;
+    }
+
+    public void setTeleOffense(boolean teleOffense) {
+        this.teleOffense = teleOffense;
+    }
+
+    public boolean isTeleDefense() {
+        return teleDefense;
+    }
+
+    public void setTeleDefense(boolean teleDefense) {
+        this.teleDefense = teleDefense;
+    }
+
+    public boolean isTeleBreakdown() {
+        return teleBreakdown;
+    }
+
+    public void setTeleBreakdown(boolean teleBreakdown) {
+        this.teleBreakdown = teleBreakdown;
+    }
+
+    public boolean isTeleRecover() {
+        return teleRecover;
+    }
+
+    public void setTeleRecover(boolean teleRecover) {
+        this.teleRecover = teleRecover;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getFouls() {
+        return fouls;
+    }
+
+    public void setFouls(int fouls) {
+        this.fouls = fouls;
+    }
+
+    public int getTeleGearsGot() {
+        return teleGearsGot;
+    }
+
+    public void setTeleGearsGot(int teleGearsGot) {
+        this.teleGearsGot = teleGearsGot;
+    }
+
+    public int getTeleGearsPickedUp() {
+        return teleGearsPickedUp;
+    }
+
+    public void setTeleGearsPickedUp(int teleGearsPickedUp) {
+        this.teleGearsPickedUp = teleGearsPickedUp;
+    }
+
+    public int getTeleGearsDeliverd() {
+        return teleGearsDeliverd;
+    }
+
+    public void setTeleGearsDeliverd(int teleGearsDeliverd) {
+        this.teleGearsDeliverd = teleGearsDeliverd;
+    }
+
+    public void clear() {
+        teamAlliance = "";
+        teamNumber = 0;
+
+        autoStartInMiddle = false;
+        autoCrossedLine = false;
+        autoHighBoiler = false;
+        autoLowBoiler = false;
+        autoMadePeg = false;
+        autoRotors = 0;
+
+        teleLowBoiler = 0;
+        teleHighBoiler = 0;
+        teleFuelFloor = 0;
+        teleFuelStation = 0;
+        teleHopperTrigger = 0;
+        teleGearsDeliverd = 0;
+        teleGearsGot = 0;
+        teleGearsPickedUp = 0;
+
+        teleRotors = 0;
+        teleLifts = false;
+        teleOffense = false;
+        teleDefense = false;
+        teleBreakdown = false;
+        teleRecover = false;
+
+        score = 0;
+        fouls = 0;
     }
 }

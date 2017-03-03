@@ -4,10 +4,30 @@
     android:layout_height="match_parent"
     tools:context="net.tinmints.scouting.AfterMatchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_marginBottom="15dp">
+    <TableRow>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Final Score: "  />
+        <EditText android:id="@+id/score"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:inputType="number" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_send" />
+        </TableRow>
+    </TableLayout>
 </FrameLayout>
