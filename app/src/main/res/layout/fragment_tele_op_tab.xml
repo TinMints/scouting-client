@@ -3,11 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="net.tinmints.scouting.TeleOpTabFragment">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_weight="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/match"/>
+
+            <TextView
+                android:id="@+id/match_number"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeleOpFragment"
+            android:id="@+id/tele_fragment"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_auto" />
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeleOpFragment"
+            android:id="@+id/tele_fragment1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_auto" />
+
+        <View style="@style/Divider"/>
+
+        <fragment android:name="net.tinmints.scouting.TeleOpFragment"
+            android:id="@+id/tele_fragment2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_auto" />
+
+        <View style="@style/Divider"/>
+
+    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

@@ -12,7 +12,6 @@ import android.widget.TextView;
 import net.tinmints.scouting.model.ScoutData;
 import net.tinmints.scouting.model.ScoutDataFactory;
 
-
 public class AutoTabFragment extends Fragment {
 
     private TextView match;
@@ -40,7 +39,6 @@ public class AutoTabFragment extends Fragment {
         return v;
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -59,6 +57,9 @@ public class AutoTabFragment extends Fragment {
             ((AutoFragment) getChildFragmentManager().findFragmentById(R.id.auto_fragment)).setData(ScoutDataFactory.instanceOf().getData(0));
             ((AutoFragment) getChildFragmentManager().findFragmentById(R.id.auto_fragment1)).setData(ScoutDataFactory.instanceOf().getData(1));
             ((AutoFragment) getChildFragmentManager().findFragmentById(R.id.auto_fragment2)).setData(ScoutDataFactory.instanceOf().getData(2));
+            getChildFragmentManager().findFragmentById(R.id.auto_fragment).onResume();
+            getChildFragmentManager().findFragmentById(R.id.auto_fragment1).onResume();
+            getChildFragmentManager().findFragmentById(R.id.auto_fragment2).onResume();
         }
         if(ScoutDataFactory.instanceOf().getData(1).getTeamNumber()<=0) {
             ((AutoFragment) getChildFragmentManager().findFragmentById(R.id.auto_fragment1)).getView().setVisibility(View.GONE);
@@ -81,6 +82,5 @@ public class AutoTabFragment extends Fragment {
             getChildFragmentManager().findFragmentById(R.id.auto_fragment2).onPause();
         }
     }
-
 
 }

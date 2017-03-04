@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import net.tinmints.scouting.model.ScoutData;
@@ -18,6 +19,7 @@ public class MatchFragment extends Fragment {
     private EditText recorder;
     private EditText match;
     private boolean init=false;
+    View v;
 
     public MatchFragment() {
         // Required empty public constructor
@@ -37,10 +39,25 @@ public class MatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_match, container, false);
+        v = inflater.inflate(R.layout.fragment_match, container, false);
 
         recorder = (EditText)v.findViewById(R.id.recorder_name);
         match = (EditText)v.findViewById(R.id.match_number);
+
+        Button button = (Button) v.findViewById(R.id.clear_button);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                ScoutData[] data = ScoutDataFactory.instanceOf().getData();
+                match.setText((data[0].getMatchNumber()+1)+"");
+                for (int i = 0; i < data.length; i++) {
+                    data[i].clear();
+                }
+            }
+        });
+
         init=true;
         return v;
     }
@@ -84,6 +101,14 @@ public class MatchFragment extends Fragment {
             if(data.getMatchNumber()!=-1 && match!=null) {
                 match.setText(data.getMatchNumber()+"");
             }
+        }
+    }
+
+    public void clearData() {
+        //((MainActivity)getActivity()).clearData(v);
+        ScoutData[] data = ScoutDataFactory.instanceOf().getData();
+        for (int i = 0; i < data.length; i++) {
+            data[i].clear();
         }
     }
 }

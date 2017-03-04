@@ -60,6 +60,9 @@ public class TeamDataTabFragment extends Fragment {
             ((TeamDataFragment) getChildFragmentManager().findFragmentById(R.id.team_data_fragment)).setData(ScoutDataFactory.instanceOf().getData(0));
             ((TeamDataFragment) getChildFragmentManager().findFragmentById(R.id.team_data_fragment1)).setData(ScoutDataFactory.instanceOf().getData(1));
             ((TeamDataFragment) getChildFragmentManager().findFragmentById(R.id.team_data_fragment2)).setData(ScoutDataFactory.instanceOf().getData(2));
+            getChildFragmentManager().findFragmentById(R.id.team_data_fragment).onResume();
+            getChildFragmentManager().findFragmentById(R.id.team_data_fragment1).onResume();
+            getChildFragmentManager().findFragmentById(R.id.team_data_fragment2).onResume();
         }
     }
 

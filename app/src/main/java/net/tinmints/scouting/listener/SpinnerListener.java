@@ -13,7 +13,7 @@ public class SpinnerListener implements AdapterView.OnItemSelectedListener {
 
     private ScoutData data;
     private TYPE type;
-    public enum TYPE {TEAMPOS,ROBOTPOS,TEAMALL}
+    public enum TYPE {TEAMALL,AUTOROTORS,TELEROTORS}
 
 
     public SpinnerListener(ScoutData data, TYPE type) {
@@ -29,11 +29,11 @@ public class SpinnerListener implements AdapterView.OnItemSelectedListener {
                 case TEAMALL:
                     data.setTeamAlliance(selected);
                     break;
-                case TEAMPOS:
-                    data.setTeamStartPos(Integer.parseInt(selected));
+                case AUTOROTORS:
+                    data.setAutoRotors(Integer.parseInt(selected));
                     break;
-                case ROBOTPOS:
-                    data.setRobotStartPos(Integer.parseInt(selected));
+                case TELEROTORS:
+                    data.setTeleRotors(Integer.parseInt(selected));
                     break;
                 default:
             }

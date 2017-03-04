@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.ParcelUuid;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import net.tinmints.scouting.model.ScoutData;
@@ -40,47 +42,61 @@ public class DisplayMessageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ScoutData[] data = (ScoutData[])intent.getSerializableExtra(MainActivity.DATA);
         String message = serialize(data[0]);
-        String message1 = serialize(data[1]);
+        String message1 = null;
+        if(data[1].getTeamNumber()>0) {
+           message1 = serialize(data[1]);
+        }
+        String message2 = null;
+        if(data[2].getTeamNumber()>0) {
+            message2 = serialize(data[2]);
+        }
         TextView textView = new TextView(this);
         textView.setTextSize(40);
+        Button button = new Button(this);
         boolean ad = false;
+        String recMessage = "No message from Server";
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter != null) {
-            message = message + " true";
             if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                message = message + " false";
+                //message = message + " false";
             } else {
-                message = message + " true ";
+                //message = message + " true ";
                 BluetoothDevice device = findPair();
                 if (device != null) {
                     try (BluetoothSocket socket = device.createRfcommSocketToServiceRecord(MY_UUID)) {
                         socket.connect();
-                        message = message + " connected";
+                        //message = message + " connected";
                         OutputStream out = socket.getOutputStream();
                         PrintStream printStream = new PrintStream(out);
                         printStream.println(message);
-                        printStream.println(message1);
+                        if(message1!=null) {
+                            printStream.println("next");
+                            printStream.println(message1);
+                        }
+                        if(message2!=null) {
+                            printStream.println("next");
+                            printStream.println(message2);
+                        }
                         printStream.println("done");
-                        message = message + " sent";
+
                         InputStream in = socket.getInputStream();
                         BufferedReader bReader = new BufferedReader(new InputStreamReader(in));
-                        message = message + " " + bReader.readLine();
+                        recMessage = bReader.readLine();
 
-                        message = message + " recieved";
                         out.close();
                         in.close();
                     } catch (IOException e) {
-                        message = message + " " + e.getMessage();
+                        recMessage = "Error: " + e.getMessage();
                     }
                 } else {
-                    message = message + " device is null";
+                    recMessage = "Device is null";
                 }
             }
         }
 
-        textView.setText(message);
+        textView.setText(recMessage);
 
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);
         layout.addView(textView);
@@ -128,8 +144,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
         for(int i=0;i<methods.length;i++) {
             try {
                 String name = methods[i].getName();
-                if(name.startsWith("get") || name.startsWith("is")) {
-                    string.append(methods[i].getName()).append(": ").append(methods[i].invoke(data)).append(System.lineSeparator());
+                if((name.startsWith("get") || name.startsWith("is")) && !name.startsWith("getClass")) {
+                    string.append(methods[i].getName()).append(":").append(methods[i].invoke(data)).append(System.lineSeparator());
                 }
             }catch(Exception e) {
 
@@ -140,7 +156,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
         return string.toString();
     }
 
-
+    public void back(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }
 
