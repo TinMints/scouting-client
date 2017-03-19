@@ -34,6 +34,7 @@ public class ScoutData implements Serializable {
     private boolean teleDefense = false;
     private boolean teleBreakdown = false;
     private boolean teleRecover = false;
+    private boolean teleYellowCard = false;
 
     private int score = 0;
     private int fouls = 0;
@@ -254,6 +255,14 @@ public class ScoutData implements Serializable {
         this.teleGearsDeliverd = teleGearsDeliverd;
     }
 
+    public boolean isTeleYellowCard() {
+        return teleYellowCard;
+    }
+
+    public void setTeleYellowCard(boolean teleYellowCard) {
+        this.teleYellowCard = teleYellowCard;
+    }
+
     public void clear() {
         teamAlliance = "";
         teamNumber = 0;
@@ -281,6 +290,7 @@ public class ScoutData implements Serializable {
         teleDefense = false;
         teleBreakdown = false;
         teleRecover = false;
+        teleYellowCard = false;
 
         score = 0;
         fouls = 0;
