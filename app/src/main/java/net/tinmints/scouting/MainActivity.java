@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private int counter = 0;
 
+    private static boolean shortForm = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,5 +109,13 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < data.length; i++) {
             data[i].clear();
         }
+    }
+
+    public static boolean isShortForm() {
+        return shortForm;
+    }
+
+    public static void setShortForm(boolean shortForm) {
+        MainActivity.shortForm = shortForm;
     }
 }

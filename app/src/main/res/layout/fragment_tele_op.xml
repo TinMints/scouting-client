@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_marginBottom="0dp" >
         <LinearLayout
-            android:background="@color/light_gray"
+            android:background="@color/yellow"
             android:layout_weight="0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -23,6 +23,7 @@
                 android:id="@+id/team_num"
                 android:layout_weight="1"
                 android:layout_width="0dp"
+                android:textStyle="bold"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,6 +31,121 @@
             android:layout_height="wrap_content"
             android:stretchColumns="1"
             android:layout_marginBottom="0dp">
+            <TableRow>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Gears: "/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text="Delivered: "/>
+                <Button
+                    android:id="@+id/tele_deliver_minus"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="-" />
+                <TextView
+                    android:id="@+id/tele_deliver"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tele_deliver_add"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="+"
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Pickup: "/>
+                <Button
+                    android:id="@+id/tele_picked_minus"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="-" />
+                <TextView
+                    android:id="@+id/tele_picked"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="0" />
+                <Button
+                    android:id="@+id/tele_picked_add"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="+"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:id="@+id/pickup_row">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=" "/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Got: "/>
+                <Button
+                    android:id="@+id/tele_got_minus"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="-"
+                    />
+                <TextView
+                    android:id="@+id/tele_got"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tele_got_add"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="+"
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="" />
+            </TableRow>
             <TableRow>
                 <TextView
                     android:layout_weight="1"
@@ -89,92 +205,34 @@
                     android:text="+"
                     />
             </TableRow>
-            <TableRow>
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Fuel: "/>
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="Station: "/>
-            <Button
-                android:id="@+id/tele_station_minus"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="-"
-                />
-            <TextView
-                android:id="@+id/tele_station"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/tele_station_add"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                />
-            <TextView
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:text="Floor: "/>
-            <Button
-                android:id="@+id/tele_floor_minus"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="-"
-                />
-            <TextView
-                android:id="@+id/tele_floor"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/tele_floor_add"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                />
-        </TableRow>
-            <TableRow>
+            <TableRow
+                android:id="@+id/fuel_row">
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Gears: "/>
+                    android:text="Fuel: "/>
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Got: "/>
+                    android:text="Station: "/>
                 <Button
-                    android:id="@+id/tele_got_minus"
+                    android:id="@+id/tele_station_minus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="-"
                     />
                 <TextView
-                    android:id="@+id/tele_got"
+                    android:id="@+id/tele_station"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="0" />
 
                 <Button
-                    android:id="@+id/tele_got_add"
+                    android:id="@+id/tele_station_add"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -184,22 +242,23 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
-                    android:text="Delivered: "/>
+                    android:text="Floor: "/>
                 <Button
-                    android:id="@+id/tele_deliver_minus"
+                    android:id="@+id/tele_floor_minus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="-" />
+                    android:text="-"
+                    />
                 <TextView
-                    android:id="@+id/tele_deliver"
+                    android:id="@+id/tele_floor"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="0" />
 
                 <Button
-                    android:id="@+id/tele_deliver_add"
+                    android:id="@+id/tele_floor_add"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -209,28 +268,29 @@
             <TableRow>
                 <TextView
                     android:layout_weight="1"
+                    android:layout_height="match_parent"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text=" "/>
+                    android:text="Other: "/>
                 <TextView
                     android:layout_weight="1"
-                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Pickup: "/>
+                    android:layout_width="0dp"
+                    android:text="Pilot Rate: "/>
                 <Button
-                    android:id="@+id/tele_picked_minus"
+                    android:id="@+id/tele_pilot_minus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="-" />
+                    android:text="-"
+                    />
                 <TextView
-                    android:id="@+id/tele_picked"
+                    android:id="@+id/tele_pilot"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="0" />
                 <Button
-                    android:id="@+id/tele_picked_add"
+                    android:id="@+id/tele_pilot_add"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -238,27 +298,29 @@
                     />
                 <TextView
                     android:layout_weight="1"
-                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="" />
-
-                <TextView
+                    android:layout_width="0dp"
+                    android:text="Fouls: "/>
+                <Button
+                    android:id="@+id/tele_fouls_minus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="" />
-
+                    android:text="-"
+                    />
                 <TextView
+                    android:id="@+id/tele_fouls"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="" />
-
-                <TextView
+                    android:text="0" />
+                <Button
+                    android:id="@+id/tele_fouls_add"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="" />
+                    android:text="+"
+                    />
             </TableRow>
         </TableLayout>
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -266,7 +328,8 @@
             android:layout_height="wrap_content"
             android:stretchColumns="1"
             android:layout_marginBottom="0dp">
-            <TableRow>
+            <TableRow
+                android:id="@+id/hopper_row">
                 <TextView
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -293,33 +356,6 @@
                     android:layout_height="match_parent"
                     android:text="+"
                     />
-
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:text="Fouls: "/>
-                <Button
-                    android:id="@+id/tele_fouls_minus"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="-"
-                    />
-                <TextView
-                    android:id="@+id/tele_fouls"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/tele_fouls_add"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="+"
-                    />
             </TableRow>
         </TableLayout>
         <TableLayout
@@ -341,9 +377,21 @@
                     android:layout_height="wrap_content"
                     android:textOff="N"
                     android:textOn="Y"/>
-
-
-
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text="Broke Down: "/>
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/tele_brokedown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+            </TableRow>
+            <TableRow
+                android:id="@+id/rotor_row">
                 <TextView
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -351,17 +399,23 @@
                     android:text="Rotors: "/>
                 <Spinner android:id="@+id/tele_rotors"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
-
-        </TableRow>
-        </TableLayout>
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1"
-            android:layout_marginBottom="0dp">
-            <TableRow>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text="Recovered: "/>
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/tele_recover"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+            </TableRow>
+            <TableRow
+                android:id="@+id/play_row">
 
                 <TextView
                     android:layout_weight="1"
@@ -383,33 +437,6 @@
                 <ToggleButton
                     android:layout_weight="1"
                     android:id="@+id/tele_defense"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textOff="N"
-                    android:textOn="Y"/>
-            </TableRow>
-            <TableRow>
-
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:text="Broke Down: "/>
-                <ToggleButton
-                    android:layout_weight="1"
-                    android:id="@+id/tele_brokedown"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textOff="N"
-                    android:textOn="Y"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:text="Recovered: "/>
-                <ToggleButton
-                    android:layout_weight="1"
-                    android:id="@+id/tele_recover"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textOff="N"

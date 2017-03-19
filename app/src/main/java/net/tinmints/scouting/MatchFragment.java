@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ToggleButton;
 
 import net.tinmints.scouting.model.ScoutData;
 import net.tinmints.scouting.model.ScoutDataFactory;
@@ -18,6 +19,7 @@ public class MatchFragment extends Fragment {
 
     private EditText recorder;
     private EditText match;
+    private ToggleButton shortForm;
     private boolean init=false;
     View v;
 
@@ -43,6 +45,7 @@ public class MatchFragment extends Fragment {
 
         recorder = (EditText)v.findViewById(R.id.recorder_name);
         match = (EditText)v.findViewById(R.id.match_number);
+        shortForm = (ToggleButton)v.findViewById(R.id.shortF);
 
         Button button = (Button) v.findViewById(R.id.clear_button);
         button.setOnClickListener(new View.OnClickListener()
@@ -76,6 +79,7 @@ public class MatchFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if(init && recorder!=null) {
+            MainActivity.setShortForm(shortForm.isChecked());
             ScoutData[] data = ScoutDataFactory.instanceOf().getData();
             if (recorder != null && recorder.getText() != null) {
                 data[0].setRecorder(recorder.getText().toString());
@@ -95,6 +99,7 @@ public class MatchFragment extends Fragment {
         super.onResume();
         ScoutData data = ScoutDataFactory.instanceOf().getData(0);
         if(init && recorder!=null) {
+            shortForm.setChecked(MainActivity.isShortForm());
             if(data.getRecorder()!=null && recorder!=null) {
                 recorder.setText(data.getRecorder());
             }

@@ -35,7 +35,18 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:layout="@layout/fragment_team_data" />
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Team Data"
+            android:id="@+id/get_team_data"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/server_respone"
+            />
         <View style="@style/Divider"/>
 
         <fragment android:name="net.tinmints.scouting.TeamDataFragment"

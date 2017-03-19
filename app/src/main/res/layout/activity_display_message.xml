@@ -9,10 +9,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.tinmints.scouting.DisplayMessageActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:onClick="back" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp" >
+
+        <TextView
+            android:id="@+id/server_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:onClick="back" />
+
+    </LinearLayout>
 
 </RelativeLayout>
