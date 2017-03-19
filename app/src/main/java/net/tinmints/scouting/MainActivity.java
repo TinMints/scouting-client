@@ -96,5 +96,17 @@ public class MainActivity extends AppCompatActivity {
         counter--;
         textView.setText(counter + " ");
     }
-    
+
+    public void clearData(View view) {
+        ScoutData d = ScoutDataFactory.instanceOf().getData(0);
+        View v = view.findViewById(R.id.match_number);
+        if(v!=null) {
+            EditText match = (EditText)v;
+            match.setText(d.getMatchNumber() + 1);
+        }
+        ScoutData[] data = ScoutDataFactory.instanceOf().getData();
+        for (int i = 0; i < data.length; i++) {
+            data[i].clear();
+        }
+    }
 }

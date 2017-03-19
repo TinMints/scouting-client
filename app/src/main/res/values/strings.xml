@@ -14,10 +14,12 @@
     <string name="recorder_hint">Enter Your Name</string>
     <string name="match">Match Number: </string>
     <string name="match_hint">Enter Match Number</string>
-    <string-array name="position">
+    <string-array name="rotors">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
     </string-array>
     <string-array name="alliance">
         <item>Red</item>

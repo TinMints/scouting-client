@@ -19,8 +19,6 @@ public class TeamDataFragment extends Fragment {
 
     private ScoutData data;
     private Spinner teamAll;
-    private Spinner robotStartPos;
-    private Spinner teamStartPos;
     private EditText teamNum;
 
     public TeamDataFragment() {
@@ -34,8 +32,6 @@ public class TeamDataFragment extends Fragment {
     public void setData(ScoutData data) {
         this.data = data;
         ((SpinnerListener)teamAll.getOnItemSelectedListener()).setData(data);
-        ((SpinnerListener)robotStartPos.getOnItemSelectedListener()).setData(data);
-        ((SpinnerListener)teamStartPos.getOnItemSelectedListener()).setData(data);
     }
 
     public static TeamDataFragment newInstance(ScoutData data) {
@@ -56,19 +52,10 @@ public class TeamDataFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_team_data, container, false);
         teamNum = (EditText)v.findViewById(R.id.team_num);
         teamAll = (Spinner) v.findViewById(R.id.team_all);
-        teamStartPos = (Spinner) v.findViewById(R.id.team_start);
-        robotStartPos = (Spinner) v.findViewById(R.id.robot_start);
-
-        ArrayAdapter<CharSequence> position = ArrayAdapter.createFromResource(this.getActivity().getApplicationContext(), R.array.position, R.layout.spinner);
-        position.setDropDownViewResource(R.layout.spinner_list);
 
         ArrayAdapter<CharSequence> alliance = ArrayAdapter.createFromResource(this.getActivity().getApplicationContext(), R.array.alliance, R.layout.spinner);
         alliance.setDropDownViewResource(R.layout.spinner_list);
 
-        teamStartPos.setAdapter(position);
-        teamStartPos.setOnItemSelectedListener(new SpinnerListener(data,SpinnerListener.TYPE.TEAMPOS));
-        robotStartPos.setAdapter(position);
-        robotStartPos.setOnItemSelectedListener(new SpinnerListener(data,SpinnerListener.TYPE.ROBOTPOS));
         teamAll.setAdapter(alliance);
         teamAll.setOnItemSelectedListener(new SpinnerListener(data,SpinnerListener.TYPE.TEAMALL));
 
@@ -83,16 +70,10 @@ public class TeamDataFragment extends Fragment {
                 teamNum.setText(data.getTeamNumber()+"");
             }
 
-            if(data.getTeamAlliance()!=null) {
+            if(data.getTeamAlliance()!=null && data.getTeamAlliance().length()!=0) {
                 teamAll.setSelection(((ArrayAdapter) teamAll.getAdapter()).getPosition(data.getTeamAlliance()));
-            }
-
-            if(data.getRobotStartPos()!=-1) {
-                robotStartPos.setSelection(((ArrayAdapter)robotStartPos.getAdapter()).getPosition(data.getRobotStartPos()+""));
-            }
-
-            if(data.getTeamStartPos()!=-1) {
-                teamStartPos.setSelection(((ArrayAdapter)teamStartPos.getAdapter()).getPosition(data.getTeamStartPos()+""));
+            } else {
+                teamAll.setSelection(0);
             }
         }
     }
@@ -104,7 +85,9 @@ public class TeamDataFragment extends Fragment {
             if(teamNum.getText()!=null) {
                 data.setTeamNumber(Integer.parseInt(teamNum.getText().toString()));
             }
-
+            if(teamAll.getSelectedItem()!=null) {
+                data.setTeamAlliance((String)teamAll.getSelectedItem());
+            }
         }
     }
 
