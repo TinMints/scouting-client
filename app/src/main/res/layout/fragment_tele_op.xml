@@ -442,6 +442,31 @@
                     android:textOff="N"
                     android:textOn="Y"/>
             </TableRow>
+            <TableRow
+                android:id="@+id/y_c">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text="Yellow Card: "/>
+                <ToggleButton
+                    android:layout_weight="1"
+                    android:id="@+id/tele_yellow_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textOff="N"
+                    android:textOn="Y"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text=" "/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:text=" "/>
+            </TableRow>
         </TableLayout>
 
     </LinearLayout>

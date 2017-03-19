@@ -46,6 +46,7 @@ public class TeleOpFragment extends Fragment {
     ToggleButton defense;
     ToggleButton broke;
     ToggleButton recovered;
+    ToggleButton yellowCard;
 
 
     public TeleOpFragment() {
@@ -88,6 +89,7 @@ public class TeleOpFragment extends Fragment {
         defense = (ToggleButton)v.findViewById(R.id.tele_defense);
         broke = (ToggleButton)v.findViewById(R.id.tele_brokedown);
         recovered = (ToggleButton)v.findViewById(R.id.tele_recover);
+        yellowCard = (ToggleButton)v.findViewById(R.id.tele_yellow_card);
 
         teleFuelLow = (TextView)v.findViewById(R.id.tele_low);
         teleFuelHigh = (TextView)v.findViewById(R.id.tele_high);
@@ -340,12 +342,14 @@ public class TeleOpFragment extends Fragment {
                 v.findViewById(R.id.play_row).setVisibility(View.GONE);
                 v.findViewById(R.id.rotor_row).setVisibility(View.GONE);
                 v.findViewById(R.id.hopper_row).setVisibility(View.GONE);
+                v.findViewById(R.id.y_c).setVisibility(View.GONE);
         } else {
             v.findViewById(R.id.pickup_row).setVisibility(View.VISIBLE);
             v.findViewById(R.id.fuel_row).setVisibility(View.VISIBLE);
             v.findViewById(R.id.play_row).setVisibility(View.VISIBLE);
             v.findViewById(R.id.rotor_row).setVisibility(View.VISIBLE);
             v.findViewById(R.id.hopper_row).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.y_c).setVisibility(View.VISIBLE);
         }
 
         return v;
@@ -372,6 +376,7 @@ public class TeleOpFragment extends Fragment {
             data.setTeleDefense(defense.isChecked());
             data.setTeleBreakdown(broke.isChecked());
             data.setTeleRecover(recovered.isChecked());
+            data.setTeleYellowCard(yellowCard.isChecked());
 
             if(teleRotors.getSelectedItem()!=null) {
                 data.setTeleRotors(Integer.parseInt((String) teleRotors.getSelectedItem()));
@@ -412,6 +417,7 @@ public class TeleOpFragment extends Fragment {
             defense.setChecked(data.isTeleDefense());
             broke.setChecked(data.isTeleBreakdown());
             recovered.setChecked(data.isTeleRecover());
+            yellowCard.setChecked(data.isTeleYellowCard());
 
             if(data.getTeleRotors()>0) {
                 teleRotors.setSelection(((ArrayAdapter) teleRotors.getAdapter()).getPosition(data.getTeleRotors()+""));
