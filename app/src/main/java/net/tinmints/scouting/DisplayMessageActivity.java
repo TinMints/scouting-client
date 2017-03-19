@@ -28,7 +28,7 @@ import java.util.UUID;
 public class DisplayMessageActivity extends AppCompatActivity {
 
     private static int REQUEST_ENABLE_BT = 32;
-    private static UUID MY_UUID = UUID.fromString("5c058be0-dc18-11e6-bf26-cec0c932ce01");
+    public static final UUID MY_UUID = UUID.fromString("5c058be0-dc18-11e6-bf26-cec0c932ce01");
     private String serverHardwareAddress = null;
     private String serverName = null;
     private BluetoothAdapter mBluetoothAdapter;
@@ -50,45 +50,24 @@ public class DisplayMessageActivity extends AppCompatActivity {
         if(data[2].getTeamNumber()>0) {
             message2 = serialize(data[2]);
         }
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        Button button = new Button(this);
-        boolean ad = false;
+
         String recMessage = "No message from Server";
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter != null) {
             if (!mBluetoothAdapter.isEnabled()) {
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                //message = message + " false";
             } else {
-                //message = message + " true ";
                 BluetoothDevice device = findPair();
                 if (device != null) {
-                    try (BluetoothSocket socket = device.createRfcommSocketToServiceRecord(MY_UUID)) {
-                        socket.connect();
-                        //message = message + " connected";
-                        OutputStream out = socket.getOutputStream();
-                        PrintStream printStream = new PrintStream(out);
-                        printStream.println(message);
-                        if(message1!=null) {
-                            printStream.println("next");
-                            printStream.println(message1);
-                        }
-                        if(message2!=null) {
-                            printStream.println("next");
-                            printStream.println(message2);
-                        }
-                        printStream.println("done");
-
-                        InputStream in = socket.getInputStream();
-                        BufferedReader bReader = new BufferedReader(new InputStreamReader(in));
-                        recMessage = bReader.readLine();
-
-                        out.close();
-                        in.close();
-                    } catch (IOException e) {
-                        recMessage = "Error: " + e.getMessage();
+                    if(message!=null) {
+                        recMessage = sendInfo(device, message);
+                    }
+                    if(message1!=null) {
+                        recMessage = recMessage + sendInfo(device, message1);
+                    }
+                    if(message2!=null) {
+                        recMessage = recMessage + sendInfo(device, message2);
                     }
                 } else {
                     recMessage = "Device is null";
@@ -96,10 +75,31 @@ public class DisplayMessageActivity extends AppCompatActivity {
             }
         }
 
-        textView.setText(recMessage);
-
         ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_message);
-        layout.addView(textView);
+        TextView textView = (TextView)layout.getRootView().findViewById(R.id.server_message);
+        textView.setText(recMessage);
+    }
+
+    private String sendInfo(BluetoothDevice device, String message) {
+        String recMessage = null;
+        try (BluetoothSocket socket = device.createRfcommSocketToServiceRecord(MY_UUID)) {
+            socket.connect();
+            //message = message + " connected";
+            OutputStream out = socket.getOutputStream();
+            PrintStream printStream = new PrintStream(out);
+            printStream.println(message);
+            printStream.println("done");
+
+            InputStream in = socket.getInputStream();
+            BufferedReader bReader = new BufferedReader(new InputStreamReader(in));
+            recMessage = bReader.readLine();
+
+            out.close();
+            in.close();
+        } catch (IOException e) {
+            recMessage = "Error: " + e.getMessage();
+        }
+        return recMessage;
     }
 
 

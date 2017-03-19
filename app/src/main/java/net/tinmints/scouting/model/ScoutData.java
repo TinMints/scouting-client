@@ -28,6 +28,7 @@ public class ScoutData implements Serializable {
     private int teleGearsGot = 0;
     private int teleGearsPickedUp = 0;
     private int teleRotors = 0;
+    private int telePilotRate = 0;
     private boolean teleLifts = false;
     private boolean teleOffense = false;
     private boolean teleDefense = false;
@@ -157,6 +158,14 @@ public class ScoutData implements Serializable {
         this.teleHopperTrigger = teleHopperTrigger;
     }
 
+    public int getTelePilotRate() {
+        return telePilotRate;
+    }
+
+    public void setTelePilotRate(int telePilotRate) {
+        this.telePilotRate = telePilotRate;
+    }
+
     public int getTeleRotors() {
         return teleRotors;
     }
@@ -264,6 +273,7 @@ public class ScoutData implements Serializable {
         teleGearsDeliverd = 0;
         teleGearsGot = 0;
         teleGearsPickedUp = 0;
+        telePilotRate = 0;
 
         teleRotors = 0;
         teleLifts = false;

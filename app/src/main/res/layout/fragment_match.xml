@@ -21,7 +21,8 @@
                 android:background="@color/light_gray"
                 android:hint="@string/recorder_hint" />
         </TableRow>
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -33,6 +34,20 @@
                 android:background="@color/light_gray"
                 android:inputType="number"
                 android:hint="@string/match_hint" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Short Form: "  />
+            <ToggleButton
+                android:layout_weight="1"
+                android:id="@+id/shortF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textOff="N"
+                android:textOn="Y"/>
         </TableRow>
         <TableRow>
             <Button

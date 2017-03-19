@@ -6,4 +6,5 @@
     <color name="colorAccent">#FFD700</color>
     <color name="darker_gray">#555555</color>
     <color name="light_gray">#DDDDDD</color>
+    <color name="yellow">#FFFF00</color>
 </resources>

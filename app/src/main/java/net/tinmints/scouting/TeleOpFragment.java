@@ -38,6 +38,8 @@ public class TeleOpFragment extends Fragment {
     int hopper = 0;
     TextView teleFouls;
     int fouls = 0;
+    TextView telePilot;
+    int pilot;
 
     ToggleButton lifts;
     ToggleButton offense;
@@ -96,6 +98,7 @@ public class TeleOpFragment extends Fragment {
         teleGearsPicked = (TextView)v.findViewById(R.id.tele_picked);
         teleHopper = (TextView)v.findViewById(R.id.tele_hoppers);
         teleFouls = (TextView)v.findViewById(R.id.tele_fouls);
+        telePilot = (TextView)v.findViewById(R.id.tele_pilot);
 
         ((Button)v.findViewById(R.id.tele_low_add)).setOnClickListener(new View.OnClickListener()
         {
@@ -307,6 +310,44 @@ public class TeleOpFragment extends Fragment {
             }
         });
 
+        ((Button)v.findViewById(R.id.tele_pilot_add)).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                pilot++;
+                telePilot.setText(pilot+"");
+            }
+        });
+
+        ((Button)v.findViewById(R.id.tele_pilot_minus)).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                pilot--;
+                if(pilot<0)
+                    pilot=0;
+
+                telePilot.setText(pilot+"");
+            }
+        });
+
+
+        if(MainActivity.isShortForm()) {
+                v.findViewById(R.id.pickup_row).setVisibility(View.GONE);
+                v.findViewById(R.id.fuel_row).setVisibility(View.GONE);
+                v.findViewById(R.id.play_row).setVisibility(View.GONE);
+                v.findViewById(R.id.rotor_row).setVisibility(View.GONE);
+                v.findViewById(R.id.hopper_row).setVisibility(View.GONE);
+        } else {
+            v.findViewById(R.id.pickup_row).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.fuel_row).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.play_row).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.rotor_row).setVisibility(View.VISIBLE);
+            v.findViewById(R.id.hopper_row).setVisibility(View.VISIBLE);
+        }
+
         return v;
     }
 
@@ -323,6 +364,7 @@ public class TeleOpFragment extends Fragment {
             data.setTeleGearsDeliverd(gearsDelivered);
             data.setTeleGearsGot(gearsGot);
             data.setTeleGearsPickedUp(gearsPicked);
+            data.setTelePilotRate(pilot);
             data.setFouls(fouls);
 
             data.setTeleLifts(lifts.isChecked());
@@ -361,6 +403,8 @@ public class TeleOpFragment extends Fragment {
             teleGearsPicked.setText(gearsPicked+"");
             fouls = data.getFouls();
             teleFouls.setText(fouls+"");
+            pilot = data.getTelePilotRate();
+            telePilot.setText(pilot+"");
 
 
             lifts.setChecked(data.isTeleLifts());
